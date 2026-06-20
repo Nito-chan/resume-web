@@ -122,7 +122,7 @@
         "year": "2025",
         "image": "/assets/images/projects/dental.png",
         "video": "",
-        "link": "#",
+        "link": "https://proper-demo-tan.vercel.app/",
         "featured": true
       },
       {
@@ -133,7 +133,7 @@
         "year": "2025",
         "image": "/assets/images/projects/aether.png",
         "video": "",
-        "link": "#",
+        "link": "https://immersive-seven-puce.vercel.app/",
         "featured": true
       },
       {
@@ -144,7 +144,7 @@
         "year": "2025",
         "image": "/assets/images/projects/aeon.png",
         "video": "",
-        "link": "#",
+        "link": "https://futuristic-ten.vercel.app/",
         "featured": true
       },
       {
@@ -155,7 +155,7 @@
         "year": "2025",
         "image": "/assets/images/projects/luxstudio.png",
         "video": "",
-        "link": "#",
+        "link": "https://port-gamma-amber.vercel.app/",
         "featured": false
       },
       {
@@ -166,7 +166,7 @@
         "year": "2025",
         "image": "/assets/images/projects/restaurant.png",
         "video": "",
-        "link": "#",
+        "link": "https://restaurant-rho-three-64.vercel.app/",
         "featured": false
       },
       {
@@ -177,7 +177,7 @@
         "year": "2025",
         "image": "/assets/images/projects/AURA.png",
         "video": "",
-        "link": "#",
+        "link": "https://ecom-blush-ten.vercel.app/",
         "featured": false
       },
       {
@@ -188,7 +188,7 @@
         "year": "2025",
         "image": "/assets/images/projects/flare.png",
         "video": "",
-        "link": "#",
+        "link": "https://fast-food-weld.vercel.app/",
         "featured": false
       }
     ]
