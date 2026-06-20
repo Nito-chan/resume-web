@@ -1,37 +1,37 @@
 {
   "site": {
-    "title": "dev.folio — Web Dev & AI Automation",
-    "shortName": "dev.folio",
+    "title": "Nito-dev — Web Dev & AI Automation",
+    "shortName": "Nito-dev",
     "description": "Freelance Web Developer, AI Automation Specialist & Designer helping businesses grow through smart, beautiful digital products.",
-    "url": "https://yourdomain.com",
+    "url": "https://resume-web-plum.vercel.app/",
     "lang": "en",
     "themeColor": "#7B6EF6",
     "favicon": "/assets/icons/favicon.svg"
   },
   "author": {
-    "name": "William",
-    "jobTitle": "Web Developer & AI Automation Specialist",
-    "email": "hello@yourname.com",
-    "phone": "+1 234 567 8900",
+    "name": "Nito",
+    "jobTitle": "Web Developer, AI Automation Specialist & Video Editor",
+    "email": "nitodev.official@gmail.com",
+    "phone": "+91 9244760460",
     "avatar": "/assets/images/avatar.jpg",
     "bio": "Freelance Web Developer, AI Automation Specialist & Designer helping businesses grow through smart, beautiful digital products."
   },
   "contact": {
-    "email": "hello@yourname.com",
+    "email": "nitodev.official@gmail.com",
     "whatsapp": {
-      "number": "+1234567890",
+      "number": "+91 9244760460",
       "message": "Hi! I'm interested in your services. Can we chat?"
     },
-    "calendly": "",
+    "calendly": "https://calendly.com/tanjiro-kamado9u/new-client",
     "responseTime": "Within 24 hours"
   },
   "social": {
-    "linkedin": { "url": "https://linkedin.com/in/yourprofile", "label": "LinkedIn" },
-    "github": { "url": "https://github.com/yourprofile", "label": "GitHub" },
+    "linkedin": { "url": "https://www.linkedin.com/in/nito-dev", "label": "LinkedIn" },
+    "github": { "url": "https://github.com/Nito-chan", "label": "GitHub" },
     "twitter": { "url": "https://twitter.com/yourprofile", "label": "Twitter / X" },
-    "instagram": { "url": "https://instagram.com/yourprofile", "label": "Instagram" },
-    "fiverr": { "url": "https://fiverr.com/yourprofile", "label": "Fiverr" },
-    "upwork": { "url": "https://upwork.com/yourprofile", "label": "Upwork" }
+    "instagram": { "url": "https://www.instagram.com/nitodev.official", "label": "Instagram" },
+    "fiverr": { "url": "https://www.fiverr.com/sellers/nitodev/edit", "label": "Fiverr" },
+    "upwork": { "url": "https://www.upwork.com/freelancers/~0189875129c75c286f?mp_source=share", "label": "Upwork" }
   },
   "nav": {
     "logo": "dev<span>.</span>folio",
@@ -47,7 +47,7 @@
     "cta": { "label": "Hire Me →", "href": "#contact" }
   },
   "hero": {
-    "badge": "Available for 2 Slots",
+    "badge": "Available for Work",
     "title": [
       { "text": "I Build Digital", "type": "normal" },
       { "text": "Experiences", "type": "highlight" },
