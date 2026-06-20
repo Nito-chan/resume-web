@@ -1550,6 +1550,27 @@ section {
 .social-link:hover { border-color: var(--accent); background: rgba(123,110,246,0.1); transform: translateY(-3px); color: var(--text); }
 .social-link:active { transform: translateY(-1px); }
 
+.quick-contact { display: flex; gap: 10px; margin-top: var(--space-md); flex-wrap: wrap; }
+
+.qc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: border-color var(--transition-base), transform var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
+}
+.qc-btn:hover { transform: translateY(-2px); }
+.qc-wa:hover { border-color: #25D366; background: rgba(37,211,102,0.08); box-shadow: 0 0 20px rgba(37,211,102,0.15); color: #25D366; }
+.qc-ig:hover { border-color: #E4405F; background: rgba(228,64,95,0.08); box-shadow: 0 0 20px rgba(228,64,95,0.15); color: #E4405F; }
+.qc-cal:hover { border-color: var(--accent); background: rgba(123,110,246,0.08); box-shadow: 0 0 20px rgba(123,110,246,0.15); color: var(--accent); }
+
 /* FORM */
 .contact-form {
   background: var(--card);

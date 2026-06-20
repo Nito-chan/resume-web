@@ -6,6 +6,7 @@ uploads/
 public/assets/images/*
 public/assets/videos/*
 !public/assets/images/.gitkeep
+!public/assets/images/projects/
 !public/assets/videos/.gitkeep
 .DS_Store
 Thumbs.db
