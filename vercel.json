@@ -1,9 +1,22 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Static'",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.js" }
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.css", "use": "@vercel/static" },
+    { "src": "*.js", "use": "@vercel/static" },
+    { "src": "admin/*", "use": "@vercel/static" },
+    { "src": "redirect/*", "use": "@vercel/static" },
+    { "src": "data/*", "use": "@vercel/static" },
+    { "src": "public/**/*", "use": "@vercel/static" },
+    { "src": "config.json", "use": "@vercel/static" },
+    { "src": "api/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "/admin/?", "dest": "/admin/index.html" },
+    { "src": "/redirect/(.*)", "dest": "/redirect/$1.html" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ],
   "headers": [
     {
