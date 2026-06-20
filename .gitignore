@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.local
+data/messages.json
+uploads/
+public/assets/images/*
+public/assets/videos/*
+!public/assets/images/.gitkeep
+!public/assets/videos/.gitkeep
+.DS_Store
+Thumbs.db

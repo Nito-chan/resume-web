@@ -1,0 +1,54 @@
+[
+  {
+    "id": "default-1",
+    "title": "E-Commerce Platform",
+    "category": "web",
+    "tags": ["Web Dev", "React"],
+    "description": "Full-stack storefront with AI-powered product recommendations and 3× conversion rate.",
+    "year": "2024",
+    "image": "",
+    "video": "",
+    "link": "#contact",
+    "featured": true,
+    "sort_order": 0
+  },
+  {
+    "id": "default-2",
+    "title": "Lead Automation System",
+    "category": "ai",
+    "tags": ["AI", "Make.com"],
+    "description": "Automated CRM workflow that qualifies and nurtures 500+ leads/week with zero manual work.",
+    "year": "2024",
+    "image": "",
+    "video": "",
+    "link": "#contact",
+    "featured": false,
+    "sort_order": 1
+  },
+  {
+    "id": "default-3",
+    "title": "SaaS Dashboard Redesign",
+    "category": "design",
+    "tags": ["UI/UX", "Branding"],
+    "description": "Complete UX overhaul reducing user churn by 40% through cleaner navigation flows.",
+    "year": "2023",
+    "image": "",
+    "video": "",
+    "link": "#contact",
+    "featured": false,
+    "sort_order": 2
+  },
+  {
+    "id": "default-4",
+    "title": "Agency Website",
+    "category": "web",
+    "tags": ["Web Dev", "WordPress"],
+    "description": "Award-winning Webflow site with custom animations and CMS for a London creative agency.",
+    "year": "2023",
+    "image": "",
+    "video": "",
+    "link": "#contact",
+    "featured": false,
+    "sort_order": 3
+  }
+]

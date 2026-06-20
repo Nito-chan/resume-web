@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting — dev.folio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #050508;
+    color: #F0EEF8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .card {
+    background: #0f0f1a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 48px 40px;
+    max-width: 400px;
+    width: 100%;
+    margin: 24px;
+  }
+  .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .logo span { color: #7B6EF6; }
+  .title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .desc { font-size: 0.85rem; color: #7A788C; margin-bottom: 24px; line-height: 1.6; }
+  .LinkedIn-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+  .loader { width: 32px; height: 32px; border: 2px solid rgba(255,255,255,0.06); border-top-color: #7B6EF6; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 24px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #7B6EF6;
+    color: white;
+    text-decoration: none;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s;
+  }
+  .btn:hover { background: #6B5EE6; }
+  .fallback { margin-top: 16px; font-size: 0.78rem; color: #7A788C; }
+  .fallback a { color: #7B6EF6; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">dev<span>.</span>folio</div>
+    <span class="LinkedIn-icon" id="LinkedInIcon">🔗</span>
+    <div class="title" id="LinkedInTitle">Redirecting to LinkedIn...</div>
+    <div class="loader"></div>
+    <div class="desc">You'll be redirected automatically in a moment.</p>
+    <a class="btn" id="directLink" href="#">Continue to LinkedIn →</a>
+    <div class="fallback">
+      <a href="/">← Back to dev.folio</a>
+    </div>
+  </div>
+
+<script>
+  // Config load + redirect
+  const LinkedIn = 'linkedin';
+
+  async function redirect() {
+    try {
+      const res = await fetch('/api/config');
+      const config = await res.json();
+      const url = config?.social?.[LinkedIn]?.url;
+      if (url) {
+        document.getElementById('directLink').href = url;
+        document.getElementById('LinkedInTitle').textContent = 'Redirecting to ' + (config?.social?.[LinkedIn]?.label || LinkedIn) + '...';
+        document.getElementById('directLink').textContent = 'Continue to ' + (config?.social?.[LinkedIn]?.label || LinkedIn) + ' →';
+        setTimeout(() => { window.location.href = url; }, 2000);
+        return;
+      }
+    } catch {}
+
+    document.querySelector('.loader').style.display = 'none';
+    document.getElementById('LinkedInTitle').textContent = 'Link not configured';
+    document.querySelector('.desc').textContent = 'Please set up your ' + LinkedIn + ' link in the admin dashboard.';
+  }
+
+  redirect();
+</script>
+</body>
+</html>
+

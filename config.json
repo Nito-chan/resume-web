@@ -1,0 +1,360 @@
+{
+  "site": {
+    "title": "dev.folio — Web Dev & AI Automation",
+    "shortName": "dev.folio",
+    "description": "Freelance Web Developer, AI Automation Specialist & Designer helping businesses grow through smart, beautiful digital products.",
+    "url": "https://yourdomain.com",
+    "lang": "en",
+    "themeColor": "#7B6EF6",
+    "favicon": "/assets/icons/favicon.svg"
+  },
+  "author": {
+    "name": "William",
+    "jobTitle": "Web Developer & AI Automation Specialist",
+    "email": "hello@yourname.com",
+    "phone": "+1 234 567 8900",
+    "avatar": "/assets/images/avatar.jpg",
+    "bio": "Freelance Web Developer, AI Automation Specialist & Designer helping businesses grow through smart, beautiful digital products."
+  },
+  "contact": {
+    "email": "hello@yourname.com",
+    "whatsapp": {
+      "number": "+1234567890",
+      "message": "Hi! I'm interested in your services. Can we chat?"
+    },
+    "calendly": "",
+    "responseTime": "Within 24 hours"
+  },
+  "social": {
+    "linkedin": { "url": "https://linkedin.com/in/yourprofile", "label": "LinkedIn" },
+    "github": { "url": "https://github.com/yourprofile", "label": "GitHub" },
+    "twitter": { "url": "https://twitter.com/yourprofile", "label": "Twitter / X" },
+    "instagram": { "url": "https://instagram.com/yourprofile", "label": "Instagram" },
+    "fiverr": { "url": "https://fiverr.com/yourprofile", "label": "Fiverr" },
+    "upwork": { "url": "https://upwork.com/yourprofile", "label": "Upwork" }
+  },
+  "nav": {
+    "logo": "dev<span>.</span>folio",
+    "links": [
+      { "label": "Services", "href": "#services" },
+      { "label": "Work", "href": "#work" },
+      { "label": "Process", "href": "#process" },
+      { "label": "Pricing", "href": "#pricing" },
+      { "label": "Skills", "href": "#skills" },
+      { "label": "Reviews", "href": "#testimonials" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "cta": { "label": "Hire Me →", "href": "#contact" }
+  },
+  "hero": {
+    "badge": "Available for 2 Slots",
+    "title": [
+      { "text": "I Build Digital", "type": "normal" },
+      { "text": "Experiences", "type": "highlight" },
+      { "text": "That", "type": "normal" },
+      { "text": "Convert.", "type": "outline" }
+    ],
+    "description": "Freelance Web Developer, AI Automation Specialist & Designer helping businesses grow through smart, beautiful digital products.",
+    "buttons": [
+      { "label": "View My Work", "href": "#work", "type": "primary", "arrow": "↓" },
+      { "label": "Let's Talk", "href": "#contact", "type": "secondary", "arrow": "→" }
+    ],
+    "stats": [
+      { "label": "Projects Done", "target": 30, "suffix": "+" },
+      { "label": "Happy Clients", "target": 20, "suffix": "+" },
+      { "label": "Years Experience", "target": 4, "suffix": "+" },
+      { "label": "Job Success", "target": 100, "suffix": "%" }
+    ]
+  },
+  "marquee": {
+    "items": [
+      "Web Development", "UI / UX Design", "AI Automation",
+      "Make.com Workflows", "Video Editing", "Landing Pages",
+      "No-Code Solutions", "Business Automation"
+    ]
+  },
+  "trusted": {
+    "label": "Trusted by leading brands & founders worldwide",
+    "brands": ["Upwork", "Fiverr", "Make.com", "Webflow", "Framer", "Notion"]
+  },
+  "services": [
+    {
+      "id": "01",
+      "icon": "globe",
+      "name": "Web Development",
+      "description": "Fast, responsive, and beautiful websites built from scratch or on popular platforms. Pixel-perfect on every device.",
+      "tags": ["HTML/CSS", "JavaScript", "React", "WordPress"],
+      "accent": "purple"
+    },
+    {
+      "id": "02",
+      "icon": "bot",
+      "name": "AI Automation",
+      "description": "Automate your business workflows with Make.com, saving hours every week. Connect your apps and let AI do the work.",
+      "tags": ["Make.com", "Zapier", "OpenAI API", "Webhooks"],
+      "accent": "cyan"
+    },
+    {
+      "id": "03",
+      "icon": "palette",
+      "name": "UI / UX Design",
+      "description": "Clean, modern designs that feel intuitive. Wireframes, mockups, and full brand identities for web and apps.",
+      "tags": ["Figma", "Framer", "Branding", "Prototyping"],
+      "accent": "orange"
+    },
+    {
+      "id": "04",
+      "icon": "video",
+      "name": "Video Editing",
+      "description": "Short-form content, reels, promos, and brand videos. Polished edits that stop the scroll and tell your story.",
+      "tags": ["Premiere Pro", "After Effects", "Reels", "Motion"],
+      "accent": "green"
+    }
+  ],
+  "work": {
+    "filters": ["All", "Web Dev", "AI / Automation", "Design", "Video"],
+    "projects": [
+      {
+        "title": "E-Commerce Platform",
+        "category": "web",
+        "tags": ["Web Dev", "React"],
+        "description": "Full-stack storefront with AI-powered product recommendations and 3× conversion rate.",
+        "year": "2024",
+        "image": "",
+        "video": "",
+        "link": "#contact",
+        "featured": true
+      },
+      {
+        "title": "Lead Automation System",
+        "category": "ai",
+        "tags": ["AI", "Make.com"],
+        "description": "Automated CRM workflow that qualifies and nurtures 500+ leads/week with zero manual work.",
+        "year": "2024",
+        "image": "",
+        "video": "",
+        "link": "#contact",
+        "featured": false
+      },
+      {
+        "title": "SaaS Dashboard Redesign",
+        "category": "design",
+        "tags": ["UI/UX", "Branding"],
+        "description": "Complete UX overhaul reducing user churn by 40% through cleaner navigation flows.",
+        "year": "2023",
+        "image": "",
+        "video": "",
+        "link": "#contact",
+        "featured": false
+      },
+      {
+        "title": "Agency Website",
+        "category": "web",
+        "tags": ["Web Dev", "WordPress"],
+        "description": "Award-winning Webflow site with custom animations and CMS for a London creative agency.",
+        "year": "2023",
+        "image": "",
+        "video": "",
+        "link": "#contact",
+        "featured": false
+      }
+    ]
+  },
+  "process": {
+    "title": "My Work Process",
+    "subtitle": "A clear, collaborative, and iterative approach from idea to launch.",
+    "steps": [
+      {
+        "id": "01",
+        "icon": "search",
+        "title": "Discovery Session",
+        "description": "We hop on a call to understand your goals, target audience, and project requirements. No fluff — just clarity."
+      },
+      {
+        "id": "02",
+        "icon": "map",
+        "title": "Strategy Mapping",
+        "description": "I map out the full project plan — tech stack, timeline, milestones, and deliverables — so you know exactly what to expect."
+      },
+      {
+        "id": "03",
+        "icon": "zap",
+        "title": "Build & Iterate",
+        "description": "I build fast and share progress regularly. You give feedback, I iterate — until every pixel is right and every workflow is smooth."
+      },
+      {
+        "id": "04",
+        "icon": "rocket",
+        "title": "Final Delivery",
+        "description": "Clean handoff with full documentation, source files, and post-launch support. You leave with a product that works."
+      }
+    ]
+  },
+  "skills": {
+    "groups": [
+      {
+        "title": "Frontend Development",
+        "items": [
+          { "name": "HTML / CSS", "percentage": 95 },
+          { "name": "JavaScript", "percentage": 85 },
+          { "name": "React / Next.js", "percentage": 78 },
+          { "name": "WordPress / Webflow", "percentage": 90 }
+        ]
+      },
+      {
+        "title": "Automation & AI",
+        "items": [
+          { "name": "Make.com", "percentage": 92 },
+          { "name": "AI Integration (GPT, Claude)", "percentage": 88 },
+          { "name": "Zapier / n8n", "percentage": 80 }
+        ]
+      }
+    ],
+    "tools": [
+      { "name": "VS Code", "icon": "zap" },
+      { "name": "Figma", "icon": "palette" },
+      { "name": "Make.com", "icon": "link" },
+      { "name": "Webflow", "icon": "globe" },
+      { "name": "GitHub", "icon": "package" },
+      { "name": "Premiere", "icon": "video" },
+      { "name": "ChatGPT", "icon": "bot" },
+      { "name": "Framer", "icon": "diamond" },
+      { "name": "Netlify", "icon": "cloud" }
+    ]
+  },
+  "experience": [
+    {
+      "period": "2023 – Present",
+      "role": "Senior Freelance Developer & AI Specialist",
+      "org": "Self-employed — Remote Worldwide"
+    },
+    {
+      "period": "2021 – 2023",
+      "role": "Frontend Developer & Designer",
+      "org": "Digital Agency — Full-time"
+    },
+    {
+      "period": "2020 – 2021",
+      "role": "UI/UX Designer",
+      "org": "Startup Studio — Contract"
+    }
+  ],
+  "testimonials": {
+    "stats": [
+      { "value": "95%", "label": "Client Satisfaction" },
+      { "value": "50K+", "label": "Revenue Generated for Clients" },
+      { "value": "4.9★", "label": "Average Rating" }
+    ],
+    "items": [
+      {
+        "text": "Incredibly talented and fast. The automation system they built saved us hours every single day. Would hire again without hesitation.",
+        "author": "Sarah M.",
+        "role": "E-Commerce Store Owner",
+        "avatar": "S",
+        "avatarColor": "purple"
+      },
+      {
+        "text": "The landing page they built converted at 3× our old one. Clean design, fast delivery, and they actually listened to what we needed.",
+        "author": "James T.",
+        "role": "SaaS Founder",
+        "avatar": "J",
+        "avatarColor": "orange"
+      },
+      {
+        "text": "Professional, communicative, and the work is outstanding. My brand finally looks the way I imagined. 10/10 would recommend.",
+        "author": "Amira K.",
+        "role": "Creative Agency Owner",
+        "avatar": "A",
+        "avatarColor": "green"
+      },
+      {
+        "text": "William delivered way beyond expectations. The AI chatbot he integrated cut our support tickets by 60%. Absolutely brilliant work.",
+        "author": "Raj P.",
+        "role": "Product Manager, TechCo",
+        "avatar": "R",
+        "avatarColor": "cyan"
+      }
+    ]
+  },
+  "pricing": {
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49",
+        "period": "/hr",
+        "description": "Perfect for small projects or tight budgets. Clean and fast delivery.",
+        "features": [
+          { "text": "Done within 2 weeks", "included": true },
+          { "text": "No-code tools (Webflow / Framer)", "included": true },
+          { "text": "Figma design included", "included": true },
+          { "text": "3 months support", "included": true },
+          { "text": "1 revision round", "included": true },
+          { "text": "Custom backend dev", "included": false },
+          { "text": "AI / automation workflows", "included": false }
+        ],
+        "cta": "Get Started →",
+        "featured": false
+      },
+      {
+        "name": "Premium",
+        "price": "$79",
+        "period": "/hr",
+        "description": "Full-stack builds with AI integration, automation, and custom design.",
+        "features": [
+          { "text": "Full custom development", "included": true },
+          { "text": "AI / automation workflows", "included": true },
+          { "text": "Make.com & Zapier setup", "included": true },
+          { "text": "Full brand identity", "included": true },
+          { "text": "6 months dedicated support", "included": true },
+          { "text": "Unlimited revisions", "included": true },
+          { "text": "Priority response", "included": true }
+        ],
+        "cta": "Get Started →",
+        "featured": true
+      },
+      {
+        "name": "Custom",
+        "price": "Let's Talk",
+        "period": "",
+        "description": "Enterprise projects, long-term partnerships, and custom scope.",
+        "features": [
+          { "text": "Everything in Premium", "included": true },
+          { "text": "Dedicated project manager", "included": true },
+          { "text": "Team collaboration", "included": true },
+          { "text": "White-label delivery", "included": true },
+          { "text": "1 year retainer option", "included": true },
+          { "text": "NDA & full IP transfer", "included": true },
+          { "text": "24hr response SLA", "included": true }
+        ],
+        "cta": "Contact Me →",
+        "featured": false
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Why should I hire you?",
+      "answer": "I specialize in the full spectrum — UX/UI design, web development, AI automation, and video. Instead of hiring 3 separate freelancers, you get one person who understands how all the pieces fit together. Every project is delivered on time, with clear communication throughout."
+    },
+    {
+      "question": "How long will my project take?",
+      "answer": "A simple landing page takes 3–5 days. A full website takes 1–3 weeks. AI automation setups typically take 1–2 weeks depending on complexity. I always provide a clear timeline before starting, and I stick to it."
+    },
+    {
+      "question": "How does your revision process work?",
+      "answer": "I share progress at key milestones so there are no surprises. Starter plan includes 1 round, Premium includes unlimited revisions. I keep iterating until you're 100% happy — your satisfaction is the metric that matters."
+    },
+    {
+      "question": "Do you offer post-launch maintenance?",
+      "answer": "Yes. Every plan includes post-launch support — bug fixes, content updates, performance optimizations. For ongoing retainer work, I offer monthly packages that keep your digital products healthy and up to date."
+    },
+    {
+      "question": "What's your refund policy?",
+      "answer": "Refunds are available if the delivered work doesn't match what was agreed upon. Since each project involves significant time and effort, change-of-mind refunds aren't offered — but I always resolve issues and will iterate until you're satisfied."
+    },
+    {
+      "question": "Can I pay by credit card?",
+      "answer": "Yes — I accept secure credit card payments via Stripe, as well as PayPal, bank transfer, and Upwork/Fiverr milestone payments. You'll receive a proper invoice for every transaction."
+    }
+  ]
+}

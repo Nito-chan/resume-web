@@ -1,0 +1,26 @@
+{
+  "name": "devfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Professional portfolio with admin dashboard",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static site - no build required'",
+    "vercel-build": "echo 'Ready for Vercel deployment'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "rate-limiter-flexible": "^11.2.0",
+    "serverless-http": "^3.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

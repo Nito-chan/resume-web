@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirect — dev.folio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #050508;
+    color: #F0EEF8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .card {
+    background: #0f0f1a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 48px 40px;
+    max-width: 400px;
+    width: 100%;
+    margin: 24px;
+  }
+  .logo { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .logo span { color: #7B6EF6; }
+  .title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .desc { font-size: 0.85rem; color: #7A788C; margin-bottom: 24px; line-height: 1.6; }
+  .loader { width: 32px; height: 32px; border: 2px solid rgba(255,255,255,0.06); border-top-color: #7B6EF6; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 24px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #7B6EF6;
+    color: white;
+    text-decoration: none;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s;
+    margin-top: 8px;
+  }
+  .btn:hover { background: #6B5EE6; }
+  .redirect-list { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .redirect-list a {
+    color: #7A788C;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s;
+  }
+  .redirect-list a:hover { color: #F0EEF8; border-color: rgba(123,110,246,0.3); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">dev<span>.</span>folio</div>
+    <div class="title">Redirecting...</div>
+    <div class="desc">Choose where you'd like to connect with me.</div>
+    <div class="redirect-list">
+      <a href="whatsapp">💬 WhatsApp</a>
+      <a href="instagram">📸 Instagram</a>
+      <a href="linkedin">💼 LinkedIn</a>
+      <a href="github">💻 GitHub</a>
+      <a href="twitter">𝕏 Twitter / X</a>
+      <a href="fiverr">🛒 Fiverr</a>
+      <a href="upwork">💼 Upwork</a>
+    </div>
+  </div>
+</body>
+</html>

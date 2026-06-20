@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — dev.folio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">dev<span>.</span>folio</div>
+    <p class="login-desc">Admin Dashboard</p>
+    <div class="login-form">
+      <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password">
+      <button id="loginBtn">Login →</button>
+      <span class="login-error" id="loginError"></span>
+    </div>
+  </div>
+</div>
+
+<div id="dashboard" style="display:none;">
+  <nav class="admin-nav">
+    <div class="admin-nav-brand">dev<span>.</span>folio <span class="admin-nav-tag">Admin</span></div>
+    <div class="admin-nav-links">
+      <button class="admin-nav-btn active" data-tab="projects">Projects</button>
+      <button class="admin-nav-btn" data-tab="config">Site Config</button>
+      <button class="admin-nav-btn" data-tab="messages">Messages</button>
+      <button class="admin-nav-btn" data-tab="analytics">Analytics</button>
+    </div>
+    <button id="logoutBtn" class="admin-logout">Logout</button>
+  </nav>
+
+  <div class="admin-main">
+
+    <!-- PROJECTS TAB -->
+    <div class="admin-tab active" id="tab-projects">
+      <div class="admin-tab-header">
+        <h2>Projects</h2>
+        <button id="addProjectBtn" class="admin-btn admin-btn-primary">+ New Project</button>
+      </div>
+      <div class="admin-projects-list" id="projectsList">
+        <div class="admin-loading">Loading projects...</div>
+      </div>
+    </div>
+
+    <!-- CONFIG TAB -->
+    <div class="admin-tab" id="tab-config">
+      <div class="admin-tab-header">
+        <h2>Site Configuration</h2>
+        <div>
+          <span class="admin-save-status" id="configStatus"></span>
+          <button id="saveConfigBtn" class="admin-btn admin-btn-primary">Save Changes</button>
+        </div>
+      </div>
+      <div class="admin-config-form" id="configForm">
+        <div class="admin-loading">Loading configuration...</div>
+      </div>
+    </div>
+
+    <!-- MESSAGES TAB -->
+    <div class="admin-tab" id="tab-messages">
+      <div class="admin-tab-header">
+        <h2>Contact Messages</h2>
+      </div>
+      <div class="admin-messages-list" id="messagesList">
+        <div class="admin-loading">Loading messages...</div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS TAB -->
+    <div class="admin-tab" id="tab-analytics">
+      <div class="admin-tab-header">
+        <h2>Analytics</h2>
+      </div>
+      <div class="admin-analytics-grid">
+        <div class="analytics-card">
+          <span class="analytics-num" id="analyticsProjects">0</span>
+          <span class="analytics-label">Total Projects</span>
+        </div>
+        <div class="analytics-card">
+          <span class="analytics-num" id="analyticsMessages">0</span>
+          <span class="analytics-label">Messages Received</span>
+        </div>
+        <div class="analytics-card">
+          <span class="analytics-num" id="analyticsServices">0</span>
+          <span class="analytics-label">Services Offered</span>
+        </div>
+        <div class="analytics-card">
+          <span class="analytics-num" id="analyticsSkills">0</span>
+          <span class="analytics-label">Skills Tracked</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="admin-modal" id="projectModal">
+  <div class="admin-modal-overlay"></div>
+  <div class="admin-modal-content">
+    <div class="admin-modal-header">
+      <h3 id="modalTitle">New Project</h3>
+      <button class="admin-modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="admin-modal-body">
+      <div class="admin-field">
+        <label>Project Title</label>
+        <input type="text" id="pTitle" placeholder="E-Commerce Platform">
+      </div>
+      <div class="admin-field">
+        <label>Description</label>
+        <textarea id="pDesc" placeholder="Full-stack storefront with AI-powered product recommendations..." rows="3"></textarea>
+      </div>
+      <div class="admin-field-row">
+        <div class="admin-field">
+          <label>Category</label>
+          <select id="pCategory">
+            <option value="web">Web Dev</option>
+            <option value="ai">AI / Automation</option>
+            <option value="design">Design</option>
+            <option value="video">Video</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label>Year</label>
+          <input type="text" id="pYear" placeholder="2024">
+        </div>
+      </div>
+      <div class="admin-field-row">
+        <div class="admin-field">
+          <label>Tags (comma separated)</label>
+          <input type="text" id="pTags" placeholder="Web Dev, React">
+        </div>
+        <div class="admin-field">
+          <label>Project Link</label>
+          <input type="text" id="pLink" placeholder="#contact">
+        </div>
+      </div>
+      <div class="admin-field-row">
+        <div class="admin-field">
+          <label>Featured Project</label>
+          <select id="pFeatured">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label>Project Image</label>
+          <input type="file" id="pImage" accept="image/*">
+          <span class="admin-field-hint">Optional. Supports JPG, PNG, WebP</span>
+        </div>
+      </div>
+      <div class="admin-field">
+        <label>Project Video</label>
+        <input type="file" id="pVideo" accept="video/*">
+        <span class="admin-field-hint">Optional. Supports MP4, WebM</span>
+      </div>
+      <div id="projectMediaPreview" class="admin-media-preview"></div>
+    </div>
+    <div class="admin-modal-footer">
+      <button class="admin-btn admin-btn-secondary" id="modalCancel">Cancel</button>
+      <button class="admin-btn admin-btn-primary" id="modalSave">Save Project</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
