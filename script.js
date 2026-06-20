@@ -2,24 +2,46 @@
   'use strict';
 
   /* ============================================================
-     CONFIG LOADING
+     CONFIG LOADING (instant from embedded JSON, cached in localStorage)
   ============================================================ */
   let CONFIG = null;
 
-  async function loadConfig() {
-    try {
-      const res = await fetch('/api/config');
-      if (res.ok) {
-        CONFIG = await res.json();
-        return;
-      }
-    } catch {}
-    try {
-      const res = await fetch('/config.json?_=' + Date.now());
-      CONFIG = await res.json();
-    } catch {
-      console.warn('Config not found, using defaults');
+  function loadConfig() {
+    const CACHE_KEY = 'devfolio_config';
+    const CACHE_AGE = 30 * 60 * 1000;
+
+    const embedded = document.getElementById('config-data');
+    if (embedded) {
+      try {
+        CONFIG = JSON.parse(embedded.textContent);
+        return CONFIG;
+      } catch {}
     }
+
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      try {
+        const { data, ts } = JSON.parse(cached);
+        if (Date.now() - ts < CACHE_AGE) {
+          CONFIG = data;
+          return CONFIG;
+        }
+      } catch {}
+    }
+
+    fetch('/config.json?_=' + Date.now())
+      .then(r => r.ok ? r.json() : null)
+      .then(cfg => {
+        if (cfg) {
+          CONFIG = cfg;
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ data: cfg, ts: Date.now() }));
+          document.querySelector('html').setAttribute('data-content-loaded', 'true');
+          renderAll();
+        }
+      })
+      .catch(() => {});
+
+    return CONFIG;
   }
 
   /* ============================================================
@@ -132,49 +154,53 @@
   }
 
   /* ============================================================
-     4. PARTICLE CANVAS
+     4. PARTICLE CANVAS (optimized)
   ============================================================ */
   function initParticles() {
     const canvas = document.getElementById('particleCanvas');
     if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { canvas.remove(); return; }
+
     const ctx = canvas.getContext('2d');
     let W, H, particles = [];
     let rafId = null;
     let isVisible = true;
+    let isMobile = window.innerWidth < 768;
 
     function resize() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
+      isMobile = W < 768;
     }
     resize();
     window.addEventListener('resize', resize);
 
     const COLORS = ['rgba(123,110,246,', 'rgba(34,211,238,', 'rgba(249,115,22,'];
-    for (let i = 0; i < 40; i++) {
+    const count = isMobile ? 18 : 35;
+    for (let i = 0; i < count; i++) {
       particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        r: Math.random() * 1.5 + 0.3,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.3 + 0.3,
+        vx: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        alpha: Math.random() * 0.4 + 0.1
+        alpha: Math.random() * 0.35 + 0.08
       });
     }
 
-    let frameCount = 0;
+    let skipFrame = false;
     function draw() {
       if (!isVisible) {
         rafId = requestAnimationFrame(draw);
         return;
       }
-      frameCount++;
-      if (frameCount % 2 !== 0) {
-        rafId = requestAnimationFrame(draw);
-        return;
-      }
+      skipFrame = !skipFrame;
+      if (skipFrame) { rafId = requestAnimationFrame(draw); return; }
+
       ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
         if (p.x < 0) p.x = W;
@@ -185,13 +211,14 @@
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.color + p.alpha + ')';
         ctx.fill();
-      });
+      }
       rafId = requestAnimationFrame(draw);
     }
     draw();
 
     const observer = new IntersectionObserver(([entry]) => {
       isVisible = entry.isIntersecting;
+      if (isVisible && !rafId) { rafId = requestAnimationFrame(draw); }
     }, { threshold: 0 });
     observer.observe(canvas);
   }
@@ -975,10 +1002,36 @@
   }
 
   /* ============================================================
+     RENDER ALL (called after config loaded)
+  ============================================================ */
+  function renderAll() {
+    if (!CONFIG) return;
+    updateMetadata();
+    document.querySelector('html').setAttribute('data-content-loaded', 'true');
+    renderHero();
+    renderMarquee();
+    renderTrusted();
+    renderServices();
+    renderFilters();
+    renderProjects();
+    renderProcess();
+    renderSkills();
+    renderTestimonials();
+    renderPricing();
+    renderFaq();
+    renderContact();
+    initFilters();
+    initMobileCta();
+    initCounters();
+    initSkillBars();
+    initReveal();
+  }
+
+  /* ============================================================
      INITIALIZATION
   ============================================================ */
-  document.addEventListener('DOMContentLoaded', async () => {
-    await loadConfig();
+  document.addEventListener('DOMContentLoaded', () => {
+    const hasConfig = loadConfig();
 
     initLoader();
     initCursor();
@@ -998,25 +1051,7 @@
     setCurrentYear();
 
     if (CONFIG) {
-      updateMetadata();
-      document.querySelector('html').setAttribute('data-content-loaded', 'true');
-      renderHero();
-      renderMarquee();
-      renderTrusted();
-      renderServices();
-      renderFilters();
-      renderProjects();
-      renderProcess();
-      renderSkills();
-      renderTestimonials();
-      renderPricing();
-      renderFaq();
-      renderContact();
-      initFilters();
-      initMobileCta();
-      initCounters();
-      initSkillBars();
-      initReveal();
+      renderAll();
     }
   });
 

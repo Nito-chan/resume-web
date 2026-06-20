@@ -651,7 +651,12 @@ section {
   padding: var(--space-5xl) var(--space-2xl);
   max-width: 1400px;
   margin: 0 auto;
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
 }
+
+#hero { content-visibility: visible; contain-intrinsic-size: unset; }
+#trusted { content-visibility: visible; contain-intrinsic-size: 150px; }
 
 #trusted, #testimonials, #pricing, #process { max-width: 100%; }
 #trusted, #testimonials, #pricing, #process { padding-left: var(--space-2xl); padding-right: var(--space-2xl); }
@@ -1748,6 +1753,111 @@ footer {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===========================
+   SKELETON LOADING
+=========================== */
+.skeleton-section { position: relative; }
+.skeleton-section[data-loaded="true"] .skeleton { display: none; }
+.skeleton-section[data-loaded="true"] > *:not(.skeleton) { opacity: 1; }
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.8s ease infinite;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes skeletonPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-h2 { height: 44px; width: 55%; margin-bottom: 20px; border-radius: var(--radius-sm); }
+.skeleton-h3 { height: 28px; width: 70%; margin-bottom: 16px; border-radius: var(--radius-sm); }
+.skeleton-p { height: 18px; width: 85%; margin-bottom: 10px; border-radius: 4px; }
+.skeleton-p-short { height: 18px; width: 40%; margin-bottom: 10px; border-radius: 4px; }
+.skeleton-card { height: 280px; width: 100%; }
+.skeleton-card-tall { height: 380px; width: 100%; }
+.skeleton-icon { width: 40px; height: 40px; border-radius: 50%; margin-bottom: 16px; }
+.skeleton-tag { height: 26px; width: 80px; border-radius: 100px; display: inline-block; margin-right: 6px; }
+
+/* ===========================
+   UI ENHANCEMENTS
+=========================== */
+/* Glass morphism for cards */
+.service-card, .project-card, .pricing-card, .process-step, .testimonial-card, .faq-item, .contact-detail, .tool-chip {
+  backdrop-filter: blur(2px);
+}
+
+/* Gradient border glow on hover */
+.service-card::after, .project-card::after, .pricing-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(123,110,246,0), rgba(34,211,238,0), rgba(249,115,22,0));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.service-card:hover::after, .project-card:hover::after, .pricing-card.featured::after {
+  opacity: 1;
+}
+
+/* Subtle glow on element hover */
+.service-card:hover .service-icon {
+  filter: drop-shadow(0 0 20px rgba(123,110,246,0.5));
+  transform: scale(1.1);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Better button transitions */
+.btn-primary, .btn-secondary, .form-submit, .nav-cta, .pricing-btn, .overlay-btn {
+  will-change: transform;
+}
+
+/* Smooth image loading */
+img { opacity: 0; transition: opacity 0.4s ease; }
+img[src]:not([src=""]) { opacity: 1; }
+
+/* Enhanced focus styles */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Subtle divider gradient */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent3));
+  border-radius: 3px;
+  margin-top: 12px;
+}
+
+/* Better testimonial quote styling */
+.testimonial-card { position: relative; }
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.testimonial-card:hover::before { opacity: 1; }
+
+/* Smooth stat counter entrance */
+.stat-num { will-change: contents; }
 
 /* ===========================
    RESPONSIVE

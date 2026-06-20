@@ -7,19 +7,25 @@ let supabase = null;
 
 function getDb() {
   if (!supabase && supabaseUrl && supabaseKey) {
-    supabase = createClient(supabaseUrl, supabaseKey, {
-      auth: { persistSession: false }
-    });
+    try {
+      supabase = createClient(supabaseUrl, supabaseKey, {
+        auth: { persistSession: false }
+      });
+    } catch {
+      supabase = null;
+    }
   }
-  return supabase;
+  return supabase && supabaseUrl ? supabase : null;
 }
 
 async function getConfig() {
-  const db = getDb();
-  if (db) {
-    const { data } = await db.from('site_config').select('config').eq('id', 1).single();
-    if (data) return data.config;
-  }
+  try {
+    const db = getDb();
+    if (db) {
+      const { data } = await db.from('site_config').select('config').eq('id', 1).single();
+      if (data) return data.config;
+    }
+  } catch {}
   try {
     const fs = require('fs');
     const path = require('path');
