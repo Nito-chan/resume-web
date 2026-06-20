@@ -122,14 +122,15 @@
   }
 
   async function loadMessages() {
-    messagesList.innerHTML = '<div class="admin-loading">Loading messages...</div>';
+    messagesList.innerHTML = '<div class="admin-loading"><div class="admin-spinner"></div> Loading messages...</div>';
     try {
       const res = await authFetch(API_BASE + '/contact/admin');
       if (res.ok) {
         const data = await res.json();
+        window._allMessages = data;
         renderMessages(data);
       } else {
-        messagesList.innerHTML = '<div class="admin-loading">No messages yet or unauthorized</div>';
+        messagesList.innerHTML = '<div class="admin-loading"><div class="admin-empty-icon">✉</div>No messages yet or unauthorized</div>';
       }
     } catch {
       messagesList.innerHTML = '<div class="admin-loading">Server unreachable</div>';
@@ -151,7 +152,7 @@
   ============================================================ */
   function renderProjects() {
     if (!PROJECTS.length) {
-      projectsList.innerHTML = '<div class="admin-loading">No projects yet. Click "+ New Project" to add one.</div>';
+      projectsList.innerHTML = '<div class="admin-loading"><div class="admin-empty-icon">📁</div>No projects yet. Click "+ New Project" to add one.</div>';
       return;
     }
 
@@ -194,15 +195,20 @@
   };
 
   window.deleteProject = async function(id) {
-    if (!confirm('Delete this project?')) return;
+    if (!(await confirmDialog('Delete this project?'))) return;
     try {
       const res = await authFetch(API_BASE + '/projects/' + id, { method: 'DELETE' });
       if (res.ok) {
         PROJECTS = PROJECTS.filter(x => (x.id || PROJECTS.indexOf(x).toString()) !== id);
         renderProjects();
         loadAnalytics();
+        addToast('Project deleted', 'success');
+      } else {
+        addToast('Failed to delete project', 'error');
       }
-    } catch {}
+    } catch {
+      addToast('Server error', 'error');
+    }
   };
 
   /* ============================================================
@@ -243,7 +249,7 @@
       featured: $('#pFeatured').value === 'true'
     };
 
-    if (!data.title) { alert('Title is required'); return; }
+    if (!data.title) { addToast('Title is required', 'error'); return; }
 
     const formData = new FormData();
     Object.entries(data).forEach(([k, v]) => formData.append(k, typeof v === 'object' ? JSON.stringify(v) : v));
@@ -264,11 +270,12 @@
         modal.classList.remove('open');
         await loadProjects();
         loadAnalytics();
+        addToast(editingProjectId ? 'Project updated' : 'Project created', 'success');
       } else {
-        alert('Failed to save project');
+        addToast('Failed to save project', 'error');
       }
     } catch {
-      alert('Server error');
+      addToast('Server error', 'error');
     }
   });
 
@@ -464,7 +471,7 @@
   ============================================================ */
   function renderMessages(messages) {
     if (!messages || !messages.length) {
-      messagesList.innerHTML = '<div class="admin-loading">No messages yet</div>';
+      messagesList.innerHTML = '<div class="admin-loading"><div class="admin-empty-icon">✉</div>No messages yet</div>';
       return;
     }
 
@@ -483,6 +490,64 @@
         </div>
       </div>
     `).join('');
+  }
+
+  const searchInput = document.getElementById('messagesSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      if (!q || !window._allMessages) {
+        renderMessages(window._allMessages || []);
+        return;
+      }
+      const filtered = window._allMessages.filter(m =>
+        (m.name || '').toLowerCase().includes(q) ||
+        (m.email || '').toLowerCase().includes(q) ||
+        (m.message || '').toLowerCase().includes(q) ||
+        (m.service || '').toLowerCase().includes(q)
+      );
+      renderMessages(filtered);
+    });
+  }
+
+  /* ============================================================
+     TOAST NOTIFICATIONS
+  ============================================================ */
+  function addToast(message, type) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast toast-' + (type || 'success');
+    const icon = type === 'error' ? '✕' : type === 'warning' ? '!' : '✓';
+    toast.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-msg">${esc(message)}</span>`;
+    container.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('visible'));
+    setTimeout(() => {
+      toast.classList.remove('visible');
+      setTimeout(() => toast.remove(), 300);
+    }, 3500);
+  }
+
+  function confirmDialog(msg) {
+    return new Promise(resolve => {
+      const overlay = document.createElement('div');
+      overlay.className = 'confirm-overlay';
+      overlay.innerHTML = `
+        <div class="confirm-box">
+          <div class="confirm-icon">!</div>
+          <div class="confirm-msg">${esc(msg)}</div>
+          <div class="confirm-actions">
+            <button class="admin-btn admin-btn-secondary" id="confirmNo">Cancel</button>
+            <button class="admin-btn admin-btn-danger" id="confirmYes">Delete</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      requestAnimationFrame(() => overlay.classList.add('visible'));
+      overlay.querySelector('#confirmYes').onclick = () => { overlay.remove(); resolve(true); };
+      overlay.querySelector('#confirmNo').onclick = () => { overlay.remove(); resolve(false); };
+      overlay.addEventListener('click', e => { if (e.target === overlay) { overlay.remove(); resolve(false); } });
+    });
   }
 
   /* ============================================================

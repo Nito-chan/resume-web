@@ -515,3 +515,140 @@ body {
 @media (max-width: 480px) {
   .admin-analytics-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* SEARCH */
+.admin-search {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 18px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  width: 280px;
+  max-width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.admin-search:focus { border-color: var(--accent); box-shadow: 0 0 20px rgba(123,110,246,0.1); }
+.admin-search::placeholder { color: var(--muted); opacity: 0.6; }
+
+/* SPINNER */
+.admin-spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255,255,255,0.06);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: adminSpin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@keyframes adminSpin { to { transform: rotate(360deg); } }
+
+/* EMPTY STATE */
+.admin-empty-icon {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.3;
+}
+
+/* TOAST */
+#toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+  width: 100%;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease;
+  pointer-events: all;
+}
+.toast.visible { transform: translateX(0); opacity: 1; }
+.toast-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.toast-success .toast-icon { background: rgba(74,222,128,0.15); color: #4ade80; }
+.toast-error .toast-icon { background: rgba(239,68,68,0.15); color: #ef4444; }
+.toast-warning .toast-icon { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.toast-msg { font-size: 0.85rem; color: var(--text); line-height: 1.4; }
+
+/* CONFIRM DIALOG */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.confirm-overlay.visible { opacity: 1; }
+.confirm-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.confirm-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 auto 16px;
+}
+.confirm-msg { font-size: 0.95rem; color: var(--text); margin-bottom: 24px; line-height: 1.5; }
+.confirm-actions { display: flex; gap: 12px; justify-content: center; }
+
+/* VISUAL POLISH */
+.admin-nav { backdrop-filter: blur(20px); background: rgba(5,5,8,0.85); }
+.admin-project-item,
+.admin-message-item,
+.admin-config-section,
+.analytics-card { backdrop-filter: blur(10px); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+.admin-project-item:hover,
+.admin-message-item:hover { border-color: rgba(123,110,246,0.15); box-shadow: 0 4px 30px rgba(123,110,246,0.05); }
+.analytics-num { background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.admin-btn-primary { background: linear-gradient(135deg, var(--accent), #8B7EF6); }
+.admin-btn-primary:hover { background: linear-gradient(135deg, #8B7EF6, var(--accent)); box-shadow: 0 4px 20px rgba(123,110,246,0.3); }
+.admin-nav-btn.active { background: linear-gradient(135deg, rgba(123,110,246,0.12), rgba(34,211,238,0.08)); }
+
+@media (max-width: 480px) {
+  .admin-analytics-grid { grid-template-columns: 1fr 1fr; }
+}
