@@ -100,25 +100,32 @@
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
     let rafId = null;
+    let idleTimer = null;
+    let moving = false;
+
+    const cHalf = 6, ringHalf = 18;
+
+    function tick() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursor.style.transform = `translate(${mouseX - cHalf}px, ${mouseY - cHalf}px)`;
+      cursorRing.style.transform = `translate(${ringX - ringHalf}px, ${ringY - ringHalf}px)`;
+      if (moving) rafId = requestAnimationFrame(tick);
+    }
 
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
+      if (!moving) {
+        moving = true;
+        rafId = requestAnimationFrame(tick);
+      }
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => { moving = false; }, 500);
     }, { passive: true });
 
     document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
     document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top = ringY + 'px';
-      rafId = requestAnimationFrame(animateRing);
-    }
-    animateRing();
 
     const hoverSelector = 'a, button, .service-card, .project-card, .tool-chip, .faq-q, .pricing-card, .testimonial-card';
     document.querySelectorAll(hoverSelector).forEach(el => {

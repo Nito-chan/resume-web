@@ -201,9 +201,8 @@ body::before {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width var(--transition-base), height var(--transition-base), background var(--transition-base);
-    mix-blend-mode: screen;
+    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+    will-change: transform;
   }
 
   .cursor-ring {
@@ -213,13 +212,13 @@ body::before {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width var(--transition-base), height var(--transition-base);
+    transition: width 0.15s ease, height 0.15s ease;
+    will-change: transform;
   }
 
   .cursor.hover { width: 20px; height: 20px; background: var(--accent3); }
   .cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(34,211,238,0.4); }
-  .cursor.clicking { transform: translate(-50%,-50%) scale(0.85); }
+  .cursor.clicking { width: 10px; height: 10px; }
 }
 
 /* ===========================
